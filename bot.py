@@ -19,3 +19,8 @@ def send_signal(message):
     bot.reply_to(message, f"Today's Signal: BUY BTC at ${btc_price} 🚀")
 
 bot.polling()
+import time
+
+while True:
+    send_signal()  # Function that sends the trading signal
+    time.sleep(3600)  # Waits 1 hour before sending the next signal
