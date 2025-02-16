@@ -22,5 +22,13 @@ bot.polling()
 import time
 
 while True:
-    send_signal()  # Function that sends the trading signal
-    time.sleep(3600)  # Waits 1 hour before sending the next signal
+    def send_signal():
+    signal = get_btc_price()
+    bot.send_message(chat_id, signal)
+import requests
+
+def get_btc_price():
+    url = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
+    response = requests.get(url)
+    price = response.json()['price']
+    return f"BUY BTC at ${price}"
